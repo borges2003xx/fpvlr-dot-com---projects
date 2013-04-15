@@ -60,7 +60,7 @@ static void setup(void)
 	sei();
 }
 
-static void updateOnceEverySec() {
+static void updateSensorsAndScreen() {
 #ifndef GPS_ENABLED
   PORTD |= LED;
 #else //GPS_ENABLED
@@ -94,19 +94,33 @@ static void updateOnceEverySec() {
   measureAnalog();
 #endif //ADCENABLED
 
+#ifdef SENSORS_ENABLED
+  updateSensors();
+#endif
+
 #ifdef ALARM_ENABLED
   updateAlarms();
 #endif // ALARM_ENABLED
-}
-  
+
+#ifdef GPS_ENABLED
+  if (gGpsLastValidData.speed < STATISTICS_MIN_SPEED_SHOW) {
+    if (gStatisticsShowCount < STATISTICS_DELAY_SHOW) {
+      gStatisticsShowCount += 1;
+    }			  
+  }
+  if (gStatisticsShowCount == STATISTICS_DELAY_SHOW) {
+    gStatisticsShow = 1;
+  }
+#endif //GPS_ENABLED
+}  
 
 static void updateOnceEveryFrame() {
   if (gKeyPressed) {
 		++gKeyPressTime;
 	}
 
-	if (gTimeTick == 0) {
-    updateOnceEverySec();
+	if ((gTimeTick%(TIME_FRAMES_PER_SEC/SCREEN_AND_SENSOR_UPDATES_PER_SEC) == 0)) {
+    updateSensorsAndScreen();
 	}
 
 #ifdef TIME_ENABLED
@@ -144,11 +158,15 @@ void main(void) {
 		if((PIND & KEY) != KEY) {
 			gKeyPressed = 1;
 			if(gKeyPressTime > 50) {
+				gKeyPressTime = 0;
 				PORTD |= LED; // long press!
 #ifdef GPS_ENABLED
 #ifdef HOME_SET_WITH_BUTTON
-      if (gGpsLastData.checksumValid != 0 && gGpsLastData.fix != 0) {
+      if (gGpsLastData.checksumValid != 0 && gGpsLastData.fix != 0) { // (Improved thanks to Yury Smirnov)
 				setHomePos();
+#ifdef TIME_ENABLED
+        resetTime();
+#endif //TIME_ENABLED
 			}
 #endif //HOME_SET_WITH_BUTTON
 #endif //GPS_ENABLED
@@ -191,6 +209,7 @@ void main(void) {
 }
 
 ISR(INT0_vect) {
+	TCNT1 = 0; // Reset sync lost timeout.
 	updateLine();
 }
 
