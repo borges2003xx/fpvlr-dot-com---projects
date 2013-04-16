@@ -61,7 +61,7 @@ static void updateText(uint8_t textId) {
   // --------------- TEXT LINE 2 (From top) -----------------------
   else if (textId == 1) {
 	  
-	  printText(gText[textId], TEXT_LINE_MAX_CHARS-1-strlen(TEXT_CALL_SIGN), TEXT_CALL_SIGN); // Call sign
+	  
 
 #ifdef SENSOR_VOLTAGE_1_ENABLED
 	  if (!gAlarmBatt1 || gBlink1Hz) {
@@ -150,6 +150,8 @@ static void updateText(uint8_t textId) {
 	}
 	// --------------- TEXT LINE 5 (From top) -----------------------
 	else if (textId == 4) {
+printText(gText[textId], pos+=8, TEXT_CALL_SIGN); // Call sign
+
 #ifdef GPS_ENABLED
 
 #endif //GPS_ENABLED

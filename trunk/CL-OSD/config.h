@@ -130,7 +130,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 #define HOME_SET_WITH_BUTTON //Home position is set when the little button on OSD is long pressed.
 //#define HOME_SET_FIX_COUNT 10 //Config for _SET_AT_FIX: After 10 successfully fixes, home is set.
 //#define HOME_FIX_MIN_SPEED 10 //Config for _AUTO_SET: More than 10 km/h sets home.
-#define HOME_SET_MIN_SATS 3 //Config for _SET_AT_FIX: Set home only when more than 4 satellites. (Thanks to Yury Smirnov)
+#define HOME_SET_MIN_SATS 4 //Config for _SET_AT_FIX: Set home only when more than 4 satellites. (Thanks to Yury Smirnov)
 
 //GPS
 #define GPS_GOOGLE_FORMAT 
@@ -145,7 +145,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 #define STATISTICS_DELAY_SHOW 10 //It takes ten secs before the statistics is shown. (Higher is better for multicopters!)
 
 //User data
-#define TEXT_CALL_SIGN "" //Set this to your call sign.
+#define TEXT_CALL_SIGN "LOTHAR" //Set this to your call sign.
 
 //VBI (Only for evaluation and development, not finished!)
 //#define VBI_TESTING_ENABLED
