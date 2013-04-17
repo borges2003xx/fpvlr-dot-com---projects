@@ -145,7 +145,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 #define STATISTICS_DELAY_SHOW 10 //It takes ten secs before the statistics is shown. (Higher is better for multicopters!)
 
 //User data
-#define TEXT_CALL_SIGN "LOTHAR" //Set this to your call sign.
+#define TEXT_CALL_SIGN "FPVLR.COM" //Set this to your call sign.
 
 //VBI (Only for evaluation and development, not finished!)
 //#define VBI_TESTING_ENABLED
