@@ -2,6 +2,8 @@
 Copyright (C) 2011 Carl Ljungström
 
 **************************************************************
+*********** layout.h basato sull'edited by miami32 ***********
+**************************************************************
 **************** //**  Truglodite  D=---==-O   ***************
 **************************************************************
 
@@ -150,7 +152,7 @@ static void updateText(uint8_t textId) {
 	}
 	// --------------- TEXT LINE 5 (From top) -----------------------
 	else if (textId == 4) {
-printText(gText[textId], pos+=8, TEXT_CALL_SIGN); // Call sign
+printText(gText[textId], pos, TEXT_CALL_SIGN); // Call sign
 
 #ifdef GPS_ENABLED
 
