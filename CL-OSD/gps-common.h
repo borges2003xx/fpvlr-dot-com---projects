@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 
 #ifdef GPS_ENABLED
 
+static int8_t altitudeArrow = 0;
 static TGpsData gGpsLastValidData = {};
 static uint8_t gGpsValidData = 0;
 static TGpsData gGpsLastData = {};
@@ -56,6 +57,16 @@ static void updateDistanceTraveled() {
 #endif //STATISTICS_ENABLED
 
 static void finishGpsDecoding() {
+	
+if (gGpsLastData.pos.altitude > gGpsLastValidData.pos.altitude) 
+altitudeArrow = 1;
+		
+else if (gGpsLastData.pos.altitude < gGpsLastValidData.pos.altitude)
+altitudeArrow = -1;
+
+else if (gGpsLastData.pos.altitude == gGpsLastValidData.pos.altitude)
+altitudeArrow = 0;
+	
 	if (gGpsLastData.checksumValid != 0) {
 #ifdef STATISTICS_ENABLED
 		updateDistanceTraveled();
@@ -63,6 +74,7 @@ static void finishGpsDecoding() {
 		gGpsLastValidData = gGpsLastData;
 		gGpsValidData = 1;
 		gLastFix = gTime;
+		
 		
 		if (gGpsLastValidData.speed >= STATISTICS_MIN_SPEED_SHOW) {
 			gStatisticsShow = 0;
