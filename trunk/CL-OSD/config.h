@@ -43,9 +43,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 //Alarms (Comment to disable)
 #define ALARM_BATT1_LOW 10.00 //Warn if below this level (in volt)
 #define ALARM_BATT2_LOW 0.00 //Warn if below this level (in volt)
-//#define ALARM_RSSI_LOW 50 //Warn if below this level (in %)
-//#define ALARM_SPEED_HIGH 200 //Warn if above this level (in kmph/mph)
-//#define ALARM_ALTITUDE_LOW 0 //Warn if below this level (in meters/feet)
+#define ALARM_RSSI_LOW 50 //Warn if below this level (in %)
+#define ALARM_SPEED_HIGH 200 //Warn if above this level (in kmph/mph)
+#define ALARM_ALTITUDE_LOW 0 //Warn if below this level (in meters/feet)
 //#define ALARM_ALTITUDE_HIGH 5000 //Warn if above this level (in meters/feet)
 //#define ALARM_DISTANCE_HIGH 10000 //Warn if below this level (in meters/feet)
 //#define ALARM_CURRENT_HIGH 50 //Warn if above this level (in Ampere)
@@ -60,7 +60,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 
 // Battery voltage sensor
 #define SENSOR_VOLTAGE_1_ENABLED
-//#define SENSOR_VOLTAGE_2_ENABLED
+#define SENSOR_VOLTAGE_2_ENABLED
 
 // Battery percentage sensor
 #ifdef SENSOR_BATTERY_PERCENTAGE_ENABLED
@@ -145,7 +145,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 #define STATISTICS_DELAY_SHOW 10 //It takes ten secs before the statistics is shown. (Higher is better for multicopters!)
 
 //User data
-#define TEXT_CALL_SIGN "FPVLR.COM" //Set this to your call sign.
+#define TEXT_CALL_SIGN "" //Set this to your call sign.
 
 //VBI (Only for evaluation and development, not finished!)
 //#define VBI_TESTING_ENABLED
@@ -204,9 +204,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 #define TEXT_SIZE_LARGE_MULT 2
 #define TEXT_SIZE_SMALL_MULT 1
 //Select font size
-//#define TEXT_LINE_TEXT_SIZES TEXT_SIZE_SMALL_MULT, TEXT_SIZE_LARGE_MULT, TEXT_SIZE_SMALL_MULT, TEXT_SIZE_SMALL_MULT, TEXT_SIZE_LARGE_MULT, TEXT_SIZE_SMALL_MULT
-#define TEXT_LINE_TEXT_SIZES TEXT_SIZE_SMALL_MULT, TEXT_SIZE_SMALL_MULT, TEXT_SIZE_LARGE_MULT, TEXT_SIZE_SMALL_MULT, TEXT_SIZE_SMALL_MULT, TEXT_SIZE_SMALL_MULT
-//#define TEXT_LINE_TEXT_SIZES TEXT_SIZE_SMALL_MULT, TEXT_SIZE_LARGE_MULT, TEXT_SIZE_LARGE_MULT, TEXT_SIZE_SMALL_MULT, TEXT_SIZE_SMALL_MULT, TEXT_SIZE_SMALL_MULT
+#define TEXT_LINE_TEXT_SIZES TEXT_SIZE_SMALL_MULT, TEXT_SIZE_SMALL_MULT, TEXT_SIZE_LARGE_MULT, TEXT_SIZE_SMALL_MULT, TEXT_SIZE_SMALL_MULT, TEXT_SIZE_LARGE_MULT
 #endif //TEXT_SMALL_ENABLED
 
 // ----------- GRAPHICS --------------
