@@ -35,17 +35,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 #define TEXT_ENABLED
 #define TIME_ENABLED
 #define ADC_ENABLED
-//#define STATISTICS_ENABLED
 #define ALARM_ENABLED
 #define SENSORS_ENABLED
 
 // ----------- ALARMS --------------
 //Alarms (Comment to disable)
 #define ALARM_BATT1_LOW 10.00 //Warn if below this level (in volt)
-#define ALARM_BATT2_LOW 0.00 //Warn if below this level (in volt)
-#define ALARM_RSSI_LOW 50 //Warn if below this level (in %)
-#define ALARM_SPEED_HIGH 200 //Warn if above this level (in kmph/mph)
-#define ALARM_ALTITUDE_LOW 0 //Warn if below this level (in meters/feet)
+#define ALARM_BATT2_LOW 10.00 //Warn if below this level (in volt)
+#define ALARM_RSSI_LOW 30 //Warn if below this level (in %)
+//#define ALARM_SPEED_HIGH 200 //Warn if above this level (in kmph/mph)
+//#define ALARM_ALTITUDE_LOW 0 //Warn if below this level (in meters/feet)
 //#define ALARM_ALTITUDE_HIGH 5000 //Warn if above this level (in meters/feet)
 //#define ALARM_DISTANCE_HIGH 10000 //Warn if below this level (in meters/feet)
 //#define ALARM_CURRENT_HIGH 50 //Warn if above this level (in Ampere)
@@ -53,22 +52,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 
 // ----------- SENSORS --------------
 // Enabled sensors
-//#define SENSOR_BATTERY_PERCENTAGE_ENABLED
 #define SENSOR_RSSI_ENABLED
-//#define SENSOR_COMPASS_ENABLED
 //#define SENSOR_CURRENT_ENABLED
 
 // Battery voltage sensor
 #define SENSOR_VOLTAGE_1_ENABLED
 #define SENSOR_VOLTAGE_2_ENABLED
-
-// Battery percentage sensor
-#ifdef SENSOR_BATTERY_PERCENTAGE_ENABLED
-#define SENSOR_BATTERY_PERCENTAGE_INPUT ANALOG_IN_1
-#define SENSOR_CELL_LOW_VOLTAGE 3.3 //(Max two digits after the dot)
-#define SENSOR_CELL_HIGH_VOLTAGE 4.4
-#define SENSOR_CELL_COUNT 3
-#endif //SENSOR_BATTERY_PERCENTAGE_ENABLED
 
 // RSSI sensor
 #ifdef SENSOR_RSSI_ENABLED
@@ -139,10 +128,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 #define FUDGE_GOOGLE_LON 6800 //Local calibration of Google GPS Long, a difference of 100 ~ 30'  (Truglodite=4280)
 #define FUDGE_GPS_ALT 0 //Local calibration of Altitude (Truglodite)
 #define SHOW_GPS_IN_FLIGHT //** Always display coords, to recover lost aircraft (cannot be used together with TEXT_COMPASS_ENABLED)
-
-//Pre and post flight info
-#define STATISTICS_MIN_SPEED_SHOW 3 //Under this speed the statistics will show.
-#define STATISTICS_DELAY_SHOW 10 //It takes ten secs before the statistics is shown. (Higher is better for multicopters!)
 
 //User data
 #define TEXT_CALL_SIGN "" //Set this to your call sign.
