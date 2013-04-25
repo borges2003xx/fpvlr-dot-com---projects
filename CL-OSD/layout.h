@@ -18,7 +18,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 #ifndef LAYOUT_H_
 #define LAYOUT_H_
 
-#include "statistics.h"
 #include "alarms.h"
 
 #ifdef TEXT_ENABLED
@@ -103,8 +102,7 @@ static void updateText(uint8_t textId) {
   else if (textId == 2) {
 	 
 #ifdef GPS_ENABLED
-	  if (gStatisticsShow) {
-	    if (gHomePosSet) {
+	  if (gHomePosSet) {
 			 pos = printText(gText[textId], pos, "\146");
 			 pos = printText(gText[textId], 2, "MT");
 			 pos = printNumber(gText[textId], 5 , gHomeDistance);
@@ -112,7 +110,7 @@ static void updateText(uint8_t textId) {
 	    else if (gBlink1Hz) {
 	      pos = printText(gText[textId], 10, "NO HOME POS");
 	    }
-	  }
+	
 	
 #endif //GPS_ENABLED
   }
@@ -121,27 +119,28 @@ static void updateText(uint8_t textId) {
 #ifdef GPS_ENABLED
         printText(gText[textId], pos, "ALT"); //ALTITUDE
 	 if (altitudeArrow == 1) 
-	     pos = printText(gText[textId], 5, "\156");
+	      pos = printText(gText[textId], 5, "\154");
+		  
      else if (altitudeArrow == -1) 
-	     pos = printText(gText[textId], 5, "\155");
-	 else if (altitudeArrow == 0) 
-	     pos = printText(gText[textId], 5, "\157");
-	    if (!gAlarmAltitude || gBlink1Hz) {
-		  pos = printNumber(gText[textId], 7 , gGpsLastValidData.pos.altitude - gHomePos.altitude); // Altitude
-	   }		
+	      pos = printText(gText[textId], 5, "\155");
+		  
+	 else pos = printText(gText[textId], 5, "=");
+	
+		 pos = printNumber(gText[textId], 7 , gGpsLastValidData.pos.altitude - gHomePos.altitude); // Altitude
+	   		
 	  
-          pos = printText(gText[textId],TEXT_LINE_MAX_CHARS-7 , "HDG");
-		  pos = printNumber(gText[textId], TEXT_LINE_MAX_CHARS-3, gGpsLastValidData.angle);
+          pos = printText(gText[textId],TEXT_LINE_MAX_CHARS-8 , "HDG");
+		  pos = printNumber(gText[textId], TEXT_LINE_MAX_CHARS-4, gGpsLastValidData.angle);
 		 
 #endif //GPS_ENABLED	  
 	}
 	// --------------- TEXT LINE 5 (From top) -----------------------
 	else if (textId == 4) {
 #ifdef GPS_ENABLED
- if (!gAlarmSpeed || gBlink1Hz) {
+
 	    pos = printNumber(gText[textId], 0, gGpsLastValidData.speed); // Speed
-		 }		
-         pos = printText(gText[textId],5 , "KM/H");
+			
+        pos = printText(gText[textId],5 , "KM/H");
 		 
 #endif //GPS_ENABLED
 

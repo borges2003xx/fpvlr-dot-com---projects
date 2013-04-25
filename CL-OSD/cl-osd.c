@@ -82,11 +82,7 @@ static void updateSensorsAndScreen() {
 				     gHomePos.longitude,
 					   &gHomeDistance,
 					   &gHomeBearing);
-#ifdef STATISTICS_ENABLED
-		if (gHomeDistance > gStatMaxDistance) {
-      gStatMaxDistance = gHomeDistance;
-    }
-#endif //STATISTICS_ENABLED
+
 	}
 #endif //GPS_ENABLED
   
@@ -102,16 +98,6 @@ static void updateSensorsAndScreen() {
   updateAlarms();
 #endif // ALARM_ENABLED
 
-#ifdef GPS_ENABLED
-  if (gGpsLastValidData.speed < STATISTICS_MIN_SPEED_SHOW) {
-    if (gStatisticsShowCount < STATISTICS_DELAY_SHOW) {
-      gStatisticsShowCount += 1;
-    }			  
-  }
-  if (gStatisticsShowCount == STATISTICS_DELAY_SHOW) {
-    gStatisticsShow = 1;
-  }
-#endif //GPS_ENABLED
 }  
 
 static void updateOnceEveryFrame() {

@@ -37,24 +37,12 @@ static void setupGps() {
 }
 
 static void setHomePos() {
-#ifdef STATISTICS_ENABLED	
-	resetStatistics();
-#endif //STATISTICS_ENABLED
+
 	gHomePos = gGpsLastValidData.pos;
 	gHomePosSet = 1;
 }
 
-#ifdef STATISTICS_ENABLED
-static void updateDistanceTraveled() {
-	TGpsPos last = gGpsLastValidData.pos;
-	TGpsPos current = gGpsLastData.pos;
-	if (last.latitude != current.latitude || last.longitude != current.longitude) {
-	  uint32_t distance;
-    calcHome(last.latitude, last.longitude, current.latitude, current.longitude, &distance, NULL);
-	  gStatDistTraveled += distance;
-	}	  
-}
-#endif //STATISTICS_ENABLED
+
 
 static void finishGpsDecoding() {
 	
@@ -64,22 +52,14 @@ altitudeArrow = 1;
 else if (gGpsLastData.pos.altitude < gGpsLastValidData.pos.altitude)
 altitudeArrow = -1;
 
-else if (gGpsLastData.pos.altitude == gGpsLastValidData.pos.altitude)
-altitudeArrow = 0;
-	
+
 	if (gGpsLastData.checksumValid != 0) {
-#ifdef STATISTICS_ENABLED
-		updateDistanceTraveled();
-#endif //STATISTICS_ENABLED    
+
 		gGpsLastValidData = gGpsLastData;
 		gGpsValidData = 1;
 		gLastFix = gTime;
 		
 		
-		if (gGpsLastValidData.speed >= STATISTICS_MIN_SPEED_SHOW) {
-			gStatisticsShow = 0;
-			gStatisticsShowCount = 0;
-		}			
 
 		if (gHomePosSet == 0) {
 			if (gGpsLastValidData.fix != 0) {
@@ -100,16 +80,7 @@ altitudeArrow = 0;
 #endif //HOME_AUTO_SET
       }
 		}	  
-#ifdef STATISTICS_ENABLED		
-		else {
-			if (gGpsLastValidData.speed > gStatMaxSpeed) {
-          gStatMaxSpeed = gGpsLastValidData.speed;
-			}
-			if (gGpsLastValidData.pos.altitude - gHomePos.altitude > gStatMaxAltitude) {
-          gStatMaxAltitude = gGpsLastValidData.pos.altitude - gHomePos.altitude;
-			}
-		}
-#endif //STATISTICS_ENABLED
+
 	}		  
 }
 

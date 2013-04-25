@@ -23,8 +23,8 @@ cl-osd.d cl-osd.o: .././cl-osd.c .././config.h .././hardware.h \
  .././trigonometry.h \
  c:\program\ files\atmel\avr\ studio\ 5.1\extensions\atmel\avrgcc\3.3.1.27\avrtoolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/pgmspace.h \
  c:\program\ files\atmel\avr\ studio\ 5.1\extensions\atmel\avrgcc\3.3.1.27\avrtoolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/stdlib.h \
- .././commonutils.h .././statistics.h .././global.h .././gps-common.h \
- .././home.h .././gps-nmea.h .././sensors.h .././graphics.h .././layout.h \
+ .././commonutils.h .././global.h .././gps-common.h .././home.h \
+ .././gps-nmea.h .././sensors.h .././graphics.h .././layout.h \
  .././alarms.h \
  c:\program\ files\atmel\avr\ studio\ 5.1\extensions\atmel\avrgcc\3.3.1.27\avrtoolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/interrupt.h
 
@@ -93,8 +93,6 @@ c:\program\ files\atmel\avr\ studio\ 5.1\extensions\atmel\avrgcc\3.3.1.27\avrtoo
 c:\program\ files\atmel\avr\ studio\ 5.1\extensions\atmel\avrgcc\3.3.1.27\avrtoolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/stdlib.h:
 
 .././commonutils.h:
-
-.././statistics.h:
 
 .././global.h:
 
